@@ -1,0 +1,2444 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oferta po incydencie bezpieczeństwa (przejęcie konta) – Microsoft 365</title>
+  <meta name="description" content="Oferta po incydencie bezpieczeństwa (przejęcie konta / Device Code Flow). Przejście z Microsoft 365 Business Basic/Standard do wyższego poziomu zabezpieczeń Microsoft 365." />
+  <link rel="icon" type="image/png" href="img/fav.ico">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --bg2:#0f141b;
+      --card:rgba(255,255,255,.04);
+      --card2:rgba(255,255,255,.06);
+      --text:#dbe2ea;
+      --muted:#93a4b6;
+      --muted2:#6f8093;
+      --border:#1f2a36;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+
+      /* Akcent (dopasuj pod branding) */
+      --accent:#6f42c1;        /* fiolet */
+      --accent2:#22c55e;       /* zielony "OK" */
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --info:#38bdf8;
+
+      --radius:18px;
+      --radius2:24px;
+      --max: 1160px;
+
+      --grad: radial-gradient(900px 400px at 15% 10%, rgba(111,66,193,.22), transparent 55%),
+              radial-gradient(800px 380px at 85% 20%, rgba(56,189,248,.18), transparent 52%),
+              radial-gradient(700px 360px at 55% 95%, rgba(34,197,94,.10), transparent 55%);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.45;
+      letter-spacing:.2px;
+    }
+
+    a{color:inherit}
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 90px;
+    }
+
+    /* Header */
+    .topbar{
+      position: sticky;
+      top:0;
+      z-index: 50;
+      background: rgba(11,15,20,.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(31,42,54,.65);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+    .mark{
+      width:34px;height:34px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(111,66,193,.9), rgba(56,189,248,.65));
+      box-shadow: 0 12px 30px rgba(111,66,193,.25);
+      border:1px solid rgba(255,255,255,.12);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute;
+      inset:-40% -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 55%);
+      transform: rotate(18deg);
+    }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted);
+      letter-spacing:0;
+      margin-top:1px;
+      font-size:12px;
+    }
+    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(111,66,193,.95), rgba(56,189,248,.55));
+      border-color: rgba(111,66,193,.35);
+      box-shadow: 0 16px 45px rgba(111,66,193,.18);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(111,66,193,1), rgba(56,189,248,.62));}
+    .btn.ghost{background: transparent}
+    .btn svg{width:16px;height:16px; opacity:.92}
+
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      border-radius: var(--radius2);
+      background: var(--bg2);
+      border: 1px solid rgba(31,42,54,.9);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:0;
+      background: var(--grad);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center;
+      margin-bottom: 10px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight:700;
+      font-size:12px;
+    }
+    .pill strong{color: var(--text);}
+    .pill .dot{width:8px;height:8px;border-radius:999px;background: var(--accent);}
+    h1{
+      margin: 4px 0 10px;
+      font-size: 28px;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 16px;
+      max-width: 70ch;
+    }
+    .hero-side{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    .mini{
+      display:grid; gap:10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .mini .row{display:flex; gap:10px; align-items:flex-start}
+    .mini .ic{
+      width:28px;height:28px;border-radius:10px;
+      display:grid;place-items:center;
+      background: rgba(111,66,193,.16);
+      border:1px solid rgba(111,66,193,.28);
+      flex:0 0 auto;
+    }
+    .mini b{color: var(--text); font-weight:800}
+    .mini small{display:block; color: var(--muted2); margin-top:2px}
+
+    /* Sections */
+    .section{
+      margin-top: 18px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(31,42,54,.9);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+    }
+    .section-h{
+      padding: 16px 18px;
+      display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+      border-bottom: 1px solid rgba(31,42,54,.8);
+      background: rgba(255,255,255,.02);
+    }
+    .section-h h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .section-h p{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 86ch;
+    }
+    .section-b{
+      padding: 16px 18px 18px;
+    }
+
+    /* Grid cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+    .card{
+      border-radius: var(--radius);
+      background: var(--card);
+      border:1px solid rgba(255,255,255,.09);
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+    .card h3{margin:0 0 8px; font-size: 14px}
+    .card p{margin:0; color: var(--muted); font-size: 13px}
+    .bullets{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight:800;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+
+    .badge.ok{border-color: rgba(34,197,94,.26); background: rgba(34,197,94,.10); color: #b7f7cf}
+    .badge.warn{border-color: rgba(245,158,11,.26); background: rgba(245,158,11,.10); color: #ffe0a6}
+    .badge.danger{border-color: rgba(239,68,68,.26); background: rgba(239,68,68,.10); color: #ffc1c1}
+    .badge.info{border-color: rgba(56,189,248,.22); background: rgba(56,189,248,.10); color: #b9ecff}
+    .tick{
+      width:18px;height:18px;border-radius:7px;
+      display:grid;place-items:center;
+      background: rgba(34,197,94,.14);
+      border:1px solid rgba(34,197,94,.28);
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+    .tick svg{width:13px;height:13px}
+    .x{
+      background: rgba(239,68,68,.12);
+      border-color: rgba(239,68,68,.26);
+    }
+
+    /* Callout */
+    .callout{
+      border-radius: var(--radius);
+      border:1px solid rgba(239,68,68,.22);
+      background: rgba(239,68,68,.08);
+      padding: 12px 12px;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      margin-top: 12px;
+      
+    }
+    .callout .ic{
+      width:30px;height:30px;border-radius:12px;
+      background: rgba(196, 11, 11, 0.14);
+      border:1px solid rgba(239,68,68,.26);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      color: rgba(239,68,68,.9);
+      border-radius: 10px;
+        background: transparent; 
+      border: none;                 /* usuwa obramowanie */
+        flex: 0 0 auto;
+
+    }
+
+            .ic svg{
+        width: 18px;
+        height: 18px;
+        }
+
+
+    .callout b{display:block; margin-bottom:2px}
+    .callout p{margin:0; color: #ffd3d3; font-size: 13px}
+
+    /* Stepper (process) */
+    .stepper{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .step{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+      align-items:flex-start;
+      position:relative;
+      overflow:hidden;
+    }
+
+    
+    /* 2) Badge w lewej kolumnie nie wychodzi poza kolumnę */
+    .step-left .badge{
+    max-width: 100%;
+    white-space: normal;  /* pozwól zawinąć tekst */
+    line-height: 1.2;
+    }
+
+    
+
+    @media (max-width: 720px){
+      .step{grid-template-columns:1fr}
+    }
+    .step:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(600px 300px at 12% 10%, rgba(111,66,193,.12), transparent 55%);
+      pointer-events:none;
+    }
+    .step-left{
+      position:relative;
+      display:grid;
+      gap:10px;
+      min-width: 0
+    }
+    .lvl{
+      display:inline-flex; align-items:center; justify-content:center;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 12px;
+      font-weight:900;
+      font-size: 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+    }
+    .lvl strong{color: var(--text)}
+    .step-right{position:relative}
+    .step-right h3{margin:0 0 6px; font-size: 15px}
+    .step-right p{margin:0; color: var(--muted); font-size: 13px}
+    .meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:10px;
+    }
+
+    /* Accordion */
+    details{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+    details + details{margin-top: 10px}
+    summary{
+      padding: 12px 14px;
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .sum-left{
+      display:flex; align-items:center; gap:10px; min-width:0;
+    }
+    .sum-ic{
+      width:34px;height:34px;border-radius:14px;
+      display:grid; place-items:center;
+      background: rgba(111,66,193,.14);
+      border: 1px solid rgba(111,66,193,.24);
+      flex:0 0 auto;
+    }
+    .sum-txt{min-width:0}
+    .sum-txt b{display:block; font-size: 13px}
+    .sum-txt span{display:block; color: var(--muted); font-size: 12px; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .chev{
+      width:26px;height:26px;border-radius:10px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+      transition: transform .14s ease;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+    .detail-body{
+      padding: 0 14px 14px;
+      border-top: 1px solid rgba(31,42,54,.8);
+    }
+
+    /* Two columns inside accordion */
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 980px){ .cols{grid-template-columns:1fr} }
+    .box{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 16px;
+    }
+    .box h4{margin:0 0 8px; font-size: 13px}
+    .box ul{margin:0; padding-left: 16px; color: var(--muted); font-size: 13px}
+    .box li{margin:6px 0}
+    .box .effects{
+      list-style:none; padding:0; margin:0; display:grid; gap:8px;
+      color: var(--text);
+    }
+    .box .effects li{display:flex; gap:10px; align-items:flex-start; font-size: 13px}
+
+    /* License matrix (div-grid, no <table>) */
+    .matrix{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      gap: 10px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .matrix{grid-template-columns:1fr}
+    }
+    .m-head{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+    }
+    .m-head b{display:block}
+    .m-head span{display:block; margin-top:4px; color: var(--muted); font-size: 12px}
+    .m-col{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+      display:grid;
+      gap:10px;
+    }
+    .chip{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      font-size: 13px;
+    }
+    .chip small{color: var(--muted)}
+    .chip .tag{
+      font-weight:900; font-size: 12px;
+      padding: 6px 8px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .chip .tag.ok{border-color: rgba(34,197,94,.28); background: rgba(34,197,94,.12); color:#b7f7cf}
+    .chip .tag.no{border-color: rgba(239,68,68,.26); background: rgba(239,68,68,.10); color:#ffc1c1}
+    .chip .tag.mid{border-color: rgba(245,158,11,.26); background: rgba(245,158,11,.10); color:#ffe0a6}
+    .highlight{
+      border: 1px solid rgba(111,66,193,.35) !important;
+      box-shadow: 0 18px 55px rgba(111,66,193,.16);
+      background: radial-gradient(560px 250px at 18% 10%, rgba(111,66,193,.18), rgba(255,255,255,.03) 55%);
+    }
+
+    /* Footer */
+    .foot{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .foot a{color: var(--text); text-decoration:none; border-bottom:1px dashed rgba(147,164,182,.35)}
+    .foot a:hover{border-bottom-color: rgba(219,226,234,.65)}
+
+    /* Sticky CTA (mobile) */
+    .sticky-cta{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: 10px 12px 12px;
+      background: linear-gradient(to top, rgba(11,15,20,.92), rgba(11,15,20,.55), transparent);
+      border-top: 1px solid rgba(31,42,54,.7);
+      display:none;
+    }
+    .sticky-cta .bar{
+      max-width: var(--max);
+      margin: 0 auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .sticky-cta .bar .btn{flex:1; justify-content:center}
+    @media (max-width: 860px){
+      .sticky-cta{display:block}
+      body{padding-bottom: 74px}
+    }
+
+    /* Print */
+    @media print{
+      .topbar, .sticky-cta{display:none !important}
+      body{background:#fff; color:#111}
+      .hero, .section, .card, details, .step, .m-head, .m-col{
+        box-shadow:none !important;
+        border-color:#ddd !important;
+        background:#fff !important;
+        color:#111 !important;
+      }
+      .sub, .section-h p, .card p, .step-right p, .box ul, .foot {color:#333 !important}
+      .badge, .pill, .btn{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important}
+      a{color:#111 !important; text-decoration:underline}
+    }
+
+    /* ===== NOWY STEP (jak na screenie) ===== */
+.step-modern{
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+/* TOP */
+.step-top{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+/* LEWA CZĘŚĆ – BADGE */
+.lvl-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:120px;
+}
+
+.lvl-main{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.8px;
+  padding:6px 10px;
+  border-radius:10px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.lvl-sub{
+  font-size:11px;
+  font-weight:700;
+  padding:5px 8px;
+  border-radius:8px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color: var(--muted);
+}
+
+/* PRAWA CZĘŚĆ */
+.step-head h3{
+  margin:0 0 6px;
+  font-size:17px;
+}
+
+.step-head p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  max-width:70ch;
+}
+
+/* TAGI */
+.step-tags{
+  margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* ULEPSZONE TAGI */
+.tag{
+  font-size:12px;
+  font-weight:800;
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+}
+
+/* KOLORY */
+.tag.ok{
+  border-color: rgba(34,197,94,.3);
+  background: rgba(34,197,94,.12);
+  color:#b7f7cf;
+}
+
+.tag.danger{
+  border-color: rgba(239,68,68,.3);
+  background: rgba(239,68,68,.12);
+  color:#ffc1c1;
+}
+
+/* ODSTĘPY MIĘDZY STEPAMI */
+.step-modern + .step-modern{
+  margin-top:16px;
+}
+
+
+#lvl0 .step-left .badge{
+  margin-top: 15px;
+}
+
+
+/* ===== TOPBAR – mniej toporny układ ===== */
+.topbar-inner{ gap:14px; }
+.desktop-actions .btn{ padding: 10px 12px; border-radius: 14px; }
+.desktop-actions{ gap:10px; flex-wrap: nowrap; }  /* trzyma w jednej linii na desktop */
+.desktop-actions .btn.ghost{ background: rgba(255,255,255,.03); }
+
+/* ===== MOBILE TOGGLE ===== */
+.btn.burger{ display:none; }
+@media (max-width: 980px){
+  .desktop-actions{ display:none; }
+  .btn.burger{ display:inline-flex; }
+}
+
+/* ===== DRAWER ===== */
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(4px);
+  z-index: 80;
+}
+
+.drawer{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(92vw, 360px);
+  background: rgba(15,20,27,.96);
+  border-left: 1px solid rgba(255,255,255,.10);
+    box-sizing: border-box;
+  box-shadow: -20px 0 60px rgba(0,0,0,.45);
+  z-index: 90;
+  padding: 14px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  transform: translateX(110%);
+    transform .26s cubic-bezier(.2,.9,.2,1);
+
+}
+
+.drawer.open{ transform: translateX(0); }
+
+.drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.drawer-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.drawer-title b{ display:block; font-size:14px; }
+.drawer-title small{ display:block; color: var(--muted); margin-top:2px; font-size:12px; }
+
+.btn.icon{
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+}
+
+/* links */
+.drawer-nav{
+  padding: 12px 0;
+  display: grid;
+  gap: 8px;
+}
+.drawer-link{
+  display:flex;
+  padding: 12px 12px;
+  border-radius: 14px;
+  text-decoration:none;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  min-width: 0;
+}
+.drawer-link:hover{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.12);
+}
+
+.drawer-actions{
+  display: grid;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.drawer-actions .btn{ width:100%; justify-content:center; 
+}
+
+
+.mitem.active{
+  border-color: rgba(111,66,193,.35);
+  background: rgba(111,66,193,.10);
+}
+
+
+/* LOGO w topbar */
+.brand-logo{
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;           /* jeśli logo jest kwadratowe i chcesz „kafelek” */
+  object-fit: contain;           /* ważne: nie rozciąga logo */
+  background: transparent;       /* jeśli PNG ma tło przezroczyste */
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 12px 30px rgba(111,66,193,.18);
+}
+
+/* tekst obok logo */
+.brand-text{
+  display:block;
+  font-weight:800;
+  letter-spacing:.3px;
+}
+
+/* mobile: logo minimalnie mniejsze, tekst może się skrócić */
+@media (max-width: 980px){
+  .brand-logo{
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+  }
+  .brand-text{
+    max-width: 58vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand-text small{
+    display:none; /* opcjonalnie: ukryj podtytuł na mobile */
+  }
+}
+
+/* ===== SAFE PREMIUM TWEAK: tylko CSS, bez ruszania JS/HTML ===== */
+
+/* Drawer: trochę bardziej „glass”, mniej ciężki */
+.drawer{
+  background: rgba(12,16,22,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(255,255,255,.10);
+}
+
+/* Nagłówek w drawerze: ciaśniej */
+.drawer-head{
+  padding-bottom: 10px;
+}
+
+/* Linki w menu: mniej jak „wielkie panele”, bardziej jak premium list items */
+.drawer-nav{
+  gap: 10px;              /* było 8px u Ciebie – zostawiamy podobnie */
+}
+
+/* Jeśli używasz .drawer-link (z poprzedniej wersji) */
+.drawer-link{
+  padding: 12px 12px;     /* było większe – zmniejszamy */
+  border-radius: 16px;
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: none;
+  font-weight: 850;
+  letter-spacing: .2px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height: 52px;       /* „premium” tap target, ale bez ogromnych kart */
+}
+
+/* Hover/tap: subtelnie (premium) */
+.drawer-link:hover{
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+.drawer-link:active{
+  transform: translateY(0) scale(.99);
+}
+
+/* Jeżeli w linkach masz tylko tekst – dodajemy „chevron” CSS-em (bez HTML) */
+.drawer-link::after{
+  content:"›";
+  color: rgba(147,164,182,.9);
+  font-size: 18px;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+/* Dolne przyciski: ciaśniejsze i bardziej premium */
+.drawer-actions{
+  gap: 10px;
+}
+.drawer-actions .btn{
+  border-radius: 16px;
+  padding: 12px 14px;
+  font-weight: 900;
+}
+
+/* Drukuj / PDF mniej „cegła” */
+.drawer-actions .btn.ghost{
+  background: rgba(255,255,255,.03);
+}
+
+/* Jeśli masz primary na dole – zostaje, ale trochę „głębi” */
+.drawer-actions .btn.primary{
+  box-shadow: 0 18px 50px rgba(111,66,193,.18);
+}
+
+/* Mobile: trochę mniej paddingu w samym drawerze (więcej treści na ekranie) */
+@media (max-width: 520px){
+  .drawer{ padding: 12px; }
+  .drawer-link{ min-height: 48px; }
+}
+
+/* ===========================
+   PREMIUM MOBILE MENU (SAFE)
+   dotyka tylko wyglądu .drawer i .drawer-link
+   =========================== */
+
+/* Drawer: bardziej "glass", mniej ciężki */
+.drawer{
+  background: rgba(12,16,22,.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-left: 1px solid rgba(255,255,255,.10);
+}
+
+/* Delikatny akcent/gradient w tle (premium) */
+.drawer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(520px 340px at 15% 0%, rgba(111,66,193,.18), transparent 55%),
+    radial-gradient(420px 320px at 115% 10%, rgba(56,189,248,.12), transparent 55%);
+  opacity:.9;
+}
+.drawer > *{ position:relative; } /* żeby zawartość była nad gradientem */
+
+/* Nagłówek: ciaśniej i czytelniej */
+.drawer-head{
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.drawer-title b{ font-size: 14px; }
+.drawer-title small{ font-size: 12px; color: var(--muted); }
+
+/* Lista linków: mniej "kafli", bardziej "row list" */
+.drawer-nav{
+  padding: 12px 0;
+  display: grid;
+  gap: 10px;
+}
+
+/* Same linki */
+.drawer-link{
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  text-decoration: none;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  min-height: 52px; /* dotykowo OK, ale nie cegła */
+  font-weight: 850;
+  letter-spacing: .2px;
+
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+/* Chevron bez zmiany HTML */
+.drawer-link::after{
+  content: none;
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(147,164,182,.95);
+  margin-left: 12px;
+}
+
+/* Hover/tap premium */
+.drawer-link:hover{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+.drawer-link:active{
+  transform: translateY(0) scale(.99);
+}
+
+/* Dół (CTA) bardziej premium i spójny */
+.drawer-actions{
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.drawer-actions .btn{
+  border-radius: 16px;
+  padding: 12px 14px;
+  font-weight: 900;
+}
+.drawer-actions .btn.ghost{
+  background: rgba(255,255,255,.03);
+}
+.drawer-actions .btn.primary{
+  box-shadow: 0 18px 50px rgba(111,66,193,.18);
+}
+
+/* Mobile: minimalnie ciaśniej */
+@media (max-width: 520px){
+  .drawer{ padding: 12px; }
+  .drawer-link{ min-height: 48px; padding: 11px 12px; }
+}
+
+/* ===== Drawer links z ikonami (premium) ===== */
+.drawer-nav{
+  padding: 12px 0;
+  display: grid;
+  gap: 10px;
+}
+
+.drawer-link{
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  text-decoration: none;
+
+  display:flex;
+  align-items:center;
+  gap: 12px;
+
+  min-height: 56px;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.drawer-link:hover{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+.drawer-link:active{
+  transform: translateY(0) scale(.99);
+}
+
+/* Ikona (kafelek) */
+.dnav-ic{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--text);
+}
+.dnav-ic svg{ width: 18px; height: 18px; opacity:.95; }
+
+/* Kolory ikon dla sekcji */
+.dnav-ic.ok{
+  background: rgba(34,197,94,.12);
+  border-color: rgba(34,197,94,.22);
+  color: #b7f7cf;
+}
+.dnav-ic.info{
+  background: rgba(56,189,248,.12);
+  border-color: rgba(56,189,248,.22);
+  color: #b9ecff;
+}
+.dnav-ic.warn{
+  background: rgba(245,158,11,.12);
+  border-color: rgba(245,158,11,.22);
+  color: #ffe0a6;
+}
+
+/* Tekst: tytuł + opis (premium) */
+.dnav-txt{
+  min-width:0;
+  display:block;
+}
+.dnav-txt b{
+  display:block;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+.dnav-txt small{
+  display:block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chevron (po prawej) */
+.dnav-chev{
+  margin-left:auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  color: var(--muted);
+  flex:0 0 auto;
+  
+}
+.dnav-chev svg{ width: 16px; height: 16px; }
+
+/* Mobile: troszkę ciaśniej */
+@media (max-width: 520px){
+  .drawer-link{ min-height: 52px; padding: 11px 12px; }
+  .dnav-ic{ width: 38px; height: 38px; border-radius: 13px; }
+}
+
+/* ===========================
+   PREMIUM SPACING (SAFE)
+   =========================== */
+
+/* 1) Więcej oddechu MIĘDZY sekcjami */
+.section{
+  margin-top: 26px;          /* było ~18px */
+  border-radius: 24px;
+}
+
+@media (max-width: 720px){
+  .section{ margin-top: 20px; }
+}
+
+/* 2) Więcej oddechu w nagłówku sekcji */
+.section-h{
+  padding: 18px 20px;        /* było 16px 18px */
+}
+
+.section-h h2{
+  margin: 0;
+}
+
+.section-h p{
+  margin-top: 8px;           /* było 6px */
+  line-height: 1.55;
+}
+
+/* 3) Więcej oddechu w BODY sekcji */
+.section-b{
+  padding: 18px 20px 22px;   /* było 16/18 */
+}
+
+/* większy pionowy rytm dla całej strony */
+.hero{ margin-top: 22px; }
+.section{ margin-top: 30px; }
+.wrap{ padding-bottom: 110px; }
+
+.foot{
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  color: var(--muted2);
+  font-size: 12px;
+}
+
+/* linki */
+.foot-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* styl linków */
+.foot a{
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(147,164,182,.35);
+  transition: border-color .12s ease, color .12s ease;
+}
+
+.foot a:hover{
+  border-bottom-color: rgba(219,226,234,.7);
+}
+
+/* mobile – ładne składanie */
+@media (max-width: 640px){
+  .foot{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .foot-links{
+    line-height: 1.6;
+  }
+}
+
+
+.foot-links a + a::before{
+  content: "·";
+  margin: 0 8px;
+  color: var(--muted2);
+}
+
+/* branding w stopce */
+.foot-brand{
+  color: var(--muted2);
+}
+
+/* reset stylu linka (jak prosiłeś) */
+.link-reset{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  margin: 0 4px;
+  transition: color .15s ease;
+}
+
+.link-reset:hover{
+  color: #ffffff;
+}
+
+
+.sub{
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+/* odstępy między paragrafami */
+.sub + .sub{
+  margin-top: 16px;
+}
+
+/* odstęp od nagłówka */
+h1 + .sub{
+  margin-top: 26px; /* trochę większy niż między <p> */
+}
+
+
+.hero h1{
+  margin-top: 26px;  /* zwiększ do 20–32px jeśli chcesz więcej powietrza */
+}
+
+
+
+/* ===== Valcreon "Firma" section (prefiks v- żeby nie nadpisywać globalnych klas) ===== */
+.v-container{ max-width: 1240px; padding: 0 18px; margin: 0 auto; }
+
+.v-firma{
+  margin-top: 26px;
+}
+
+.v-firmaCard{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 24px;
+  box-shadow: 0 22px 70px rgba(0,0,0,.45);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  position: relative;
+}
+
+.v-firmaCard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(900px 320px at 20% 0%, rgba(111,66,193,.18), transparent 56%),
+    radial-gradient(700px 320px at 110% 10%, rgba(56,189,248,.10), transparent 55%);
+}
+
+.v-firmaGrid{
+  display:grid;
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.v-firmaLeft{
+  padding: 34px;
+  position: relative;
+}
+
+.v-firmaRight{
+  padding: 28px;
+  background: rgba(0,0,0,.14);
+  border-left: 1px solid rgba(255,255,255,.06);
+  position: relative;
+}
+
+.v-firmaLogo{
+  height: clamp(56px, 6vw, 84px);
+  width:auto;
+  display:block;
+  margin: 0 0 16px;
+  filter: drop-shadow(0 10px 30px rgba(111,66,193,.34));
+}
+
+.v-firmaTitle{
+  font-size: clamp(20px, 2.1vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.v-firmaLead{
+  color: rgba(255,255,255,.72);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+  max-width: 65ch;
+}
+
+.v-miniKpis{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 20px;
+}
+
+.v-kpi{
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.v-kpiTop{ color: rgba(255,255,255,.55); font-size: 12px; margin-bottom: 3px; }
+.v-kpiBottom{ color: rgba(255,255,255,.92); font-weight: 800; font-size: 13px; }
+
+.v-firmaActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Buttons (spójne z Twoimi, ale bez konfliktu) */
+.v-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  text-decoration:none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.v-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); }
+.v-btnBrand{
+  background: linear-gradient(135deg, rgba(111,66,193,1), rgba(56,189,248,.62));
+  border-color: rgba(111,66,193,.35);
+  box-shadow: 0 18px 50px rgba(111,66,193,.18);
+}
+.v-btnGhost{
+  background: rgba(255,255,255,.03);
+}
+
+.v-badgesTitle{
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: rgba(255,255,255,.92);
+}
+
+.v-badgesGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.v-badge{
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.16);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.v-badgeIcon{
+  width: 34px;
+  height: 34px;
+  display:grid;
+  place-items:center;
+  border-radius: 12px;
+  background: rgba(111,66,193,.12);
+  border: 1px solid rgba(111,66,193,.24);
+  flex: 0 0 auto;
+}
+
+.v-badgeHead{ font-weight: 900; margin-bottom: 2px; font-size: 13px; color: rgba(255,255,255,.92); }
+.v-badgeSub{ color: rgba(255,255,255,.62); font-size: 12px; line-height: 1.45; }
+
+@media (max-width: 992px){
+  .v-firmaGrid{ grid-template-columns: 1fr; }
+  .v-firmaLeft{ padding: 24px 18px; }
+  .v-firmaRight{ padding: 18px; border-left: 0; border-top: 1px solid rgba(255,255,255,.08); }
+  .v-badgesGrid{ grid-template-columns: 1fr; }
+  .v-miniKpis{ grid-template-columns: 1fr; }
+}
+
+
+
+
+  </style>
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="#kontekst" aria-label="Przejdź do początku oferty">
+  <img class="brand-logo" src="./logoV.png" alt="Logo" />
+  <span class="brand-text">
+    Oferta zabezpieczeń Microsoft 365
+    <small>po incydencie (przejęcie konta)</small>
+  </span>
+</a>
+
+
+<div class="actions desktop-actions" aria-label="Nawigacja (desktop)">
+  <a class="btn ghost" href="#proces">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    Proces
+  </a>
+  <a class="btn ghost" href="#wariant1">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7l3-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Wariant 1
+  </a>
+  <a class="btn ghost" href="#wariant2">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8 4v6c0 5-3.5 9-8 10C7.5 22 4 18 4 13V7l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    Wariant 2
+  </a>
+
+  <button class="btn ghost" type="button" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9V4h12v5M6 18h12v2H6v-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 14H5a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    Drukuj / PDF
+  </button>
+
+
+<a class="btn primary"
+   href="https://bookings.cloud.microsoft/book/RedFlag1@redflag.com.pl"
+   target="_blank"
+   rel="noopener">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M21 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m20 0a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2m20 0-10 7L1 8"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"/>
+  </svg>
+  Umów 15 min
+</a>
+
+</div>
+
+<!-- MOBILE: hamburger -->
+<button class="btn burger" type="button"
+        aria-label="Otwórz menu"
+        aria-haspopup="dialog"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        onclick="openMenu()">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  Menu
+</button>
+
+
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" aria-label="Wprowadzenie">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">
+            <span class="pill"><span class="dot" aria-hidden="true"></span><strong>Oferta po incydencie</strong></span>
+            <span class="pill"><strong>Device Code Flow</strong> – przejęcie tokenu dostępu</span>
+            <span class="pill">Microsoft 365 – ograniczenie ryzyka i dalsza ochrona</span>
+          </div>
+
+          <h1>Przejście z Business Basic / Standard do wyższego poziomu zabezpieczeń</h1>
+
+                    
+
+                    <p class="sub">
+                    Środowisko Microsoft 365 w modelu <b>Business Basic / Standard / Apps for Business + domyślne wartości zabezpieczeń</b>
+                    zapewnia dostęp do danych, ale nie daje kontroli nad tożsamością, typami logowania i sesjami użytkowników.
+                    </p>
+
+                    <p class="sub">
+                    W praktyce oznacza to, że po incydencie (np. phishing lub Device Code Flow) ryzyko nie zostaje wyeliminowane,
+                    a może się powtarzać.
+                    </p>
+
+                    <p class="sub">
+                    Poniżej przedstawiono proces <b>od szybkiej stabilizacji</b> do <b>docelowego modelu Zero Trust</b>,
+                    który przywraca kontrolę nad dostępem i ogranicza ryzyko kolejnych zdarzeń.
+                    </p>
+
+
+          <div class="callout">
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10.3 3.2 2.5 20.5h19L13.7 3.2a2 2 0 0 0-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <b>W tym modelu: atak nie jest wyjątkiem – jest naturalnym efektem braku kontroli nad tożsamością.</b>
+              <p>Priorytetem jest ograniczenie ryzyka: blokady typów logowania (m.in. Device Code Flow), reakcja na ryzyko, segmentacja dostępu i kontrola sesji.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="mini">
+            <div class="row">
+              <div class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v6c0 5-3.5 9-8 10C7.5 22 4 18 4 13V7l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <b>Cel</b>
+                <small>Kontrola logowań, redukcja phishingu, zabezpieczenie urządzeń i danych.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="ic" aria-hidden="true" style="background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.26)">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <b>Tryb</b>
+                <small>Wariant 1: szybka stabilizacja; Wariant 2: stałe zarządzanie (CyberONE).</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="ic" aria-hidden="true" style="background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.26)">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <b>Efekt</b>
+                <small>Ograniczenie takeoverów, lepsza odporność na ransomware, mniej phishingu.</small>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KONTEKST -->
+    <section class="section" id="kontekst">
+      <div class="section-h">
+        <div>
+          <h2>Kontekst: Business Basic / Standard + domyślne wartości zabezpieczeń</h2>
+          <p>Domyślne zabezpieczenia są automatyczne, ale zapewniają jedynie minimalną ochronę i nie dają kontroli nad kluczowymi wektorami ataku.</p>
+        </div>
+        <span class="badge danger">Minimalna kontrola</span>
+      </div>
+      <div class="section-b">
+        <div class="grid">
+          <div class="card">
+            <h3>Co to oznacza w praktyce</h3>
+            <ul class="bullets">
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak kontroli typów logowania (np. Device Code Flow)</li>
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak reakcji na podejrzane logowania (brak polityk ryzyka)</li>
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak segmentacji dostępu (lokalizacja, urządzenie, aplikacja)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Braki w MFA i sesjach</h3>
+            <ul class="bullets">
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak wymuszenia silniejszych metod MFA</li>
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak kontroli czasu trwania sesji użytkownika</li>
+              <li><span class="tick x" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Brak wymuszeń ponownego logowania „po incydencie”</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Ryzyko biznesowe</h3>
+            <p>
+              Bez kontroli tożsamości i sesji, przejęcie konta jest kwestią czasu — zwłaszcza po incydencie phishingowym.
+              Następny etap to ryzyko dostępu do danych i pracy użytkownika.
+            </p>
+            <div class="meta">
+              <span class="badge warn">phishing</span>
+              <span class="badge warn">takeover</span>
+              <span class="badge warn">ransomware</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCES -->
+    <section class="section" id="proces">
+      <div class="section-h">
+        <div>
+          <h2>Proces przejścia na wyższy poziom zabezpieczeń (schemat)</h2>
+          <p>Od szybkiej stabilizacji (kontrola tożsamości) przez ochronę urządzeń i poczty, aż po stałe zarządzanie bezpieczeństwem.</p>
+        </div>
+        <span class="badge info">Krok po kroku</span>
+      </div>
+      <div class="section-b">
+        <div class="stepper">
+          <div class="step" id="lvl0">
+            <div class="step-left">
+              <div class="lvl"><strong>Poziom 0</strong>&nbsp; / Basic / Standard</div>
+              <div class="badge danger">Minimalny poziom ochrony</div>
+            </div>
+            <div class="step-right">
+              <h3>Stan wyjściowy: domyślne wartości zabezpieczeń</h3>
+              <p>Ochrona „automatyczna” bez kontroli typów logowania, bez segmentacji i bez polityk ryzyka. Po incydencie to za mało.</p>
+              <div class="meta">
+                <span class="badge danger">brak CA</span>
+                <span class="badge danger">brak blokad DCF</span>
+                <span class="badge danger">słaba kontrola sesji</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" id="lvl0">
+            <div class="step-left">
+              <div class="lvl"><strong>Poziom 1</strong>&nbsp; / Wariant 1</div>
+              <div class="badge ok">Szybka stabilizacja</div>
+            </div>
+            <div class="step-right">
+              <h3>Entra ID P1 + Conditional Access (Dostęp warunkowy)</h3>
+              <p>Natychmiastowe ograniczenie ryzyka: wymuszenie MFA, kontrola typów logowania (w tym Device Code Flow), lokalizacji i sesji.</p>
+              <div class="meta">
+                <span class="badge ok">MFA policy</span>
+                <span class="badge ok">blokada legacy auth</span>
+                <span class="badge ok">kontrola sesji</span>
+                <span class="badge ok">zgody aplikacji</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" id="lvl0">
+            <div class="step-left">
+              <div class="lvl"><strong>Poziom 2</strong>&nbsp; / Rozszerzenie</div>
+              <div class="badge ok">Endpoint Security</div>
+            </div>
+            <div class="step-right">
+              <h3>Microsoft Defender for Business (urządzenia)</h3>
+              <p>Domknięcie luki po stronie endpointów: EDR, ASR, widoczność incydentów. Zwiększa odporność na ransomware.</p>
+              <div class="meta">
+                <span class="badge ok">EDR</span>
+                <span class="badge ok">ASR</span>
+                <span class="badge ok">alerty/incydenty</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" id="lvl0">
+            <div class="step-left">
+              <div class="lvl"><strong>Poziom 3</strong>&nbsp; / Rozszerzenie</div>
+              <div class="badge ok">Mail & Collaboration</div>
+            </div>
+            <div class="step-right">
+              <h3>Defender for Office 365 P1 (poczta i współpraca)</h3>
+              <p>Ograniczenie phishingu u źródła: Safe Links, Safe Attachments, anti-phishing. Mniej „wejścia” do kolejnego incydentu.</p>
+              <div class="meta">
+                <span class="badge ok">Safe Links</span>
+                <span class="badge ok">Safe Attachments</span>
+                <span class="badge ok">Anti-Phishing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" id="lvl0">
+            <div class="step-left">
+              <div class="lvl"><strong>Poziom 4</strong>&nbsp; / Wariant 2</div>
+              <div class="badge info">Docelowy model Zero Trust</div>
+            </div>
+            <div class="step-right">
+              <h3>RedFlag CyberONE: wdrożenie + stałe zarządzanie bezpieczeństwem</h3>
+              <p>Standaryzacja konfiguracji + monitoring i utrzymanie. Bezpieczeństwo przewidywalne (zarządzane), a nie reaktywne.</p>
+              <div class="meta">
+                <span class="badge info">monitoring</span>
+                <span class="badge info">ciągłe dostosowanie</span>
+                <span class="badge info">zgodność z rekomendacjami</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WARIANT 1 -->
+    <section class="section" id="wariant1">
+      <div class="section-h">
+        <div>
+          <h2>Wariant 1 – optymalizacja istniejącego środowiska</h2>
+          <p><b>Entra ID P1 + Dostęp warunkowy</b>. Cel: szybkie ograniczenie ryzyka bez przebudowy środowiska.</p>
+        </div>
+        <span class="badge ok">Szybko i bez rewolucji</span>
+      </div>
+      <div class="section-b">
+
+        <details open>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v6c0 5-3.5 9-8 10C7.5 22 4 18 4 13V7l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="sum-txt">
+                <b>Entra ID P1 + Conditional Access</b>
+                <span>Kontrola logowań, sesji, lokalizacji, metod MFA i zgód aplikacji</span>
+              </div>
+            </div>
+            <div class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </summary>
+          <div class="detail-body">
+            <div class="cols">
+              <div class="box">
+                <h4>Cel</h4>
+                <ul>
+                  <li>Szybkie ograniczenie ryzyka po incydencie (DCF / phishing)</li>
+                  <li>Spójne polityki zamiast „per-user MFA”</li>
+                  <li>Segmentacja dostępu: aplikacja, lokalizacja, ryzyko, sesja</li>
+                </ul>
+              </div>
+
+              <div class="box">
+                <h4>Efekt</h4>
+                <ul class="effects">
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ograniczenie najczęstszych scenariuszy phishingu</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Kontrola logowania i sesji użytkownika</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Poprawa bezpieczeństwa bez zmiany sposobu pracy</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="box" style="margin-top:12px">
+              <h4>Zakres (konkretnie)</h4>
+              <ul>
+                <li>✅ <b>Wymuszenie MFA dla wszystkich użytkowników</b> przez Conditional Access (Zero Tolerance)</li>
+                <li>✅ <b>Ochrona rejestracji metod MFA</b> (Authentication methods policy + registration campaign)</li>
+                <li>✅ <b>Ograniczenie lokalizacji logowania</b> (np. blokada spoza PL / UE)</li>
+                <li>✅ <b>Kontrola Device Code Flow</b> (ograniczenie / blokada logowań „bez przeglądarki”)</li>
+                <li>✅ <b>Blokada legacy authentication</b> (IMAP/POP/SMTP AUTH itp.)</li>
+                <li>✅ <b>Kontrola sesji użytkownika</b> (brak trwałych sesji, wymuszenia re-login)</li>
+                <li>✅ <b>Ograniczenie zgód aplikacji</b> (tylko administrator zatwierdza aplikacje)</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-ic" aria-hidden="true" style="background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.26)">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22c4.5-1 8-5 8-10V7l-8-4-8 4v5c0 5 3.5 9 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="sum-txt">
+                <b>Rozszerzenie: Microsoft Defender for Business (Endpoint Security)</b>
+                <span>EDR, ASR i widoczność incydentów – odporność na ransomware</span>
+              </div>
+            </div>
+            <div class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </summary>
+          <div class="detail-body">
+            <div class="cols">
+              <div class="box">
+                <h4>Kontekst (po incydencie)</h4>
+                <ul>
+                  <li>Device Code Flow pokazuje, że przejęcie tożsamości jest etapem 1</li>
+                  <li>Realne ryzyko zaczyna się przy dostępie do danych i pracy użytkownika</li>
+                  <li>Bez ochrony endpointów nie widać działań na urządzeniu</li>
+                </ul>
+              </div>
+              <div class="box">
+                <h4>Efekt</h4>
+                <ul class="effects">
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Wykrywanie zagrożeń niewidocznych na poziomie logowania</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ograniczenie skutków przejęcia konta (post-compromise)</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Przygotowanie do pełnego modelu Zero Trust</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="box" style="margin-top:12px">
+              <h4>Zakres wdrożenia (Defender for Business)</h4>
+              <ul>
+                <li>✅ <b>Ochrona antywirusowa i EDR</b> (centralnie zarządzany Defender; detekcja anomalii)</li>
+                <li>✅ <b>Ograniczenie powierzchni ataku (ASR)</b> (blokady niebezpiecznych zachowań)</li>
+                <li>✅ <b>Rejestr incydentów i alertów</b> (widoczność + szybka reakcja)</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-ic" aria-hidden="true" style="background: rgba(56,189,248,.12); border-color: rgba(56,189,248,.22)">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 9h8M8 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="sum-txt">
+                <b>Rozszerzenie: Microsoft Defender for Office 365 P1</b>
+                <span>Safe Links, Safe Attachments, anti-phishing – mniej phishingu „na wejściu”</span>
+              </div>
+            </div>
+            <div class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </summary>
+
+          <div class="detail-body">
+            <div class="cols">
+              <div class="box">
+                <h4>Kontekst (po incydencie)</h4>
+                <ul>
+                  <li>DCF zwykle startuje od wiadomości e-mail / linku do logowania</li>
+                  <li>Atak wchodzi przez pocztę, nie tylko przez brak MFA</li>
+                  <li>Bez ochrony e-mail użytkownik zobaczy „wiarygodny” phishing</li>
+                </ul>
+              </div>
+              <div class="box">
+                <h4>Efekt</h4>
+                <ul class="effects">
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Znacząco mniej phishingów dociera do użytkowników</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Blokada linków prowadzących do przejęcia kont</li>
+                  <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mniejsze ryzyko powtórzenia incydentu</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="box" style="margin-top:12px">
+              <h4>Zakres wdrożenia (Defender for Office 365 P1)</h4>
+              <ul>
+                <li>✅ <b>Safe Links</b> – analiza linków w czasie rzeczywistym, blokada złośliwych stron</li>
+                <li>✅ <b>Safe Attachments</b> – skanowanie przed dostarczeniem, blokada malware / unknown</li>
+                <li>✅ <b>Zaawansowana ochrona antyphishingowa</b> – spoofing, domena, fałszywe strony logowania</li>
+                <li>✅ <b>Wzmocnione Anti-Spam / Anti-Phishing</b> – lepsza detekcja kampanii</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <div class="callout" style="margin-top:12px; border-color: rgba(34,197,94,.22); background: rgba(34,197,94,.08)">
+          <div class="ic" aria-hidden="true" style="background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.26)">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <b>Wariant 1 = szybka poprawa bezpieczeństwa bez zmiany pracy użytkownika.</b>
+            <p>Najpierw kontrola tożsamości i sesji, potem domknięcie urządzeń i poczty (najczęstsza ścieżka ataku).</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WARIANT 2 -->
+    <section class="section" id="wariant2">
+      <div class="section-h">
+        <div>
+          <h2>Wariant 2 – RedFlag CyberONE (docelowy model bezpieczeństwa)</h2>
+          <p>Standaryzowane wdrożenie + stałe zarządzanie bezpieczeństwem Microsoft 365 w modelu <b>Zero Trust</b>.</p>
+        </div>
+        <span class="badge info">Zarządzane, nie reaktywne</span>
+      </div>
+
+      <div class="section-b">
+        <div class="grid">
+          <div class="card">
+            <h3>Tożsamość i dostęp</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>MFA dla wszystkich użytkowników</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Conditional Access i segmentacja dostępu</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ograniczenie zgód aplikacji + Break Glass</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Poczta i phishing</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SPF, DKIM, DMARC</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Safe Links / Safe Attachments</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Anti-Spam / Anti-Phishing (wzmocnione)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Urządzenia i dostęp do danych</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>CA dla urządzeń zarządzanych/niezarządzanych</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Blokady sesji przeglądarki i kontrola dostępu</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Endpoint security (Premium): Defender, AV/Firewall/ASR, BitLocker</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:12px">
+          <div class="card">
+            <h3>Dane i kontrola</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Retencja danych</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Sensitivity Labels</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Monitoring działań użytkowników</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Monitoring i utrzymanie</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Monitoring alertów i konfiguracji</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ciągłe dostosowywanie do nowych zagrożeń</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Zgodność z rekomendacjami (np. CISA) – praktycznie</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Efekt biznesowy</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Znaczące ograniczenie phishingu i takeoverów</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Pełna kontrola nad tożsamością i dostępem</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Przewidywalny model bezpieczeństwa (zarządzany)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LICENCJE -->
+    <section class="section" id="licencje">
+      <div class="section-h">
+        <div>
+          <h2>Licencje Microsoft 365 a poziom bezpieczeństwa</h2>
+          <p>
+            Wybór licencji nie dotyczy wyłącznie aplikacji (Word, Excel, Outlook), ale przede wszystkim poziomu kontroli nad ryzykiem.
+            Niższe plany zapewniają dostęp do danych, jednak nie kontrolują scenariuszy przejęcia i nadużyć tak skutecznie jak wyższe.
+          </p>
+        </div>
+        <span class="badge warn">Decyzja bezpieczeństwa</span>
+      </div>
+
+      <div class="section-b">
+        <div class="matrix">
+          <div class="m-head">
+            <b>Obszary kontroli</b>
+            <span>Co realnie „zyskujesz” bezpieczeństwowo</span>
+          </div>
+
+          <div class="m-col">
+            <div class="chip">
+              <div><b>Business Basic</b><br><small>Minimalna kontrola</small></div>
+              <span class="tag no">niski</span>
+            </div>
+            <div class="chip"><div>Conditional Access (CA)</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Kontrola Device Code Flow</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Kontrola sesji / wymuszenia</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Zaaw. ochrona poczty</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>EDR / ASR na urządzeniach</div><span class="tag no">brak</span></div>
+          </div>
+
+          <div class="m-col">
+            <div class="chip">
+              <div><b>Business Standard</b><br><small>Więcej aplikacji, ale nadal ograniczona kontrola</small></div>
+              <span class="tag mid">średni</span>
+            </div>
+            <div class="chip"><div>Conditional Access (CA)</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Kontrola Device Code Flow</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Kontrola sesji / wymuszenia</div><span class="tag no">brak</span></div>
+            <div class="chip"><div>Zaaw. ochrona poczty</div><span class="tag mid">opcjonalnie</span></div>
+            <div class="chip"><div>EDR / ASR na urządzeniach</div><span class="tag mid">opcjonalnie</span></div>
+          </div>
+
+          <div class="m-col highlight">
+            <div class="chip">
+              <div><b>Wyższy poziom</b><br><small>Entra P1 / Premium + rozszerzenia Defender</small></div>
+              <span class="tag ok">wysoki</span>
+            </div>
+            <div class="chip"><div>Conditional Access (CA)</div><span class="tag ok">tak</span></div>
+            <div class="chip"><div>Kontrola Device Code Flow</div><span class="tag ok">tak</span></div>
+            <div class="chip"><div>Kontrola sesji / wymuszenia</div><span class="tag ok">tak</span></div>
+            <div class="chip"><div>Defender for Office 365 P1</div><span class="tag ok">tak</span></div>
+            <div class="chip"><div>Defender for Business (EDR/ASR)</div><span class="tag ok">tak</span></div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:12px; border-color: rgba(56,189,248,.22); background: rgba(56,189,248,.08)">
+          <div class="ic" aria-hidden="true" style="background: rgba(56,189,248,.12); border-color: rgba(56,189,248,.22)">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" stroke="currentColor" stroke-width="2"/><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <b>W skrócie:</b>
+            <p>
+              Business Basic/Standard dają „dostęp do danych”, ale nie dają narzędzi do kontroli scenariuszy przejęć.
+              Dopiero wyższe poziomy wprowadzają realne mechanizmy: CA, kontrolę sesji, ochronę poczty i urządzeń.
+              <br />
+              Więcej: <a href="https://mxtoolbox.pl/sec/licencje.html" target="_blank" rel="noopener">mxtoolbox.pl/sec/licencje.html</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<section class="section" id="firma">
+
+  <div class="section-b">
+
+    <div class="v-firmaCard">
+      <div class="v-firmaGrid">
+
+        <!-- LEFT -->
+        <div class="v-firmaLeft">
+          <img
+            src="./logoV.png"
+            alt="Valcreon"
+            class="v-firmaLogo"
+            loading="lazy"
+          >
+
+          <h2 class="v-firmaTitle">
+            Valcreon – polska firma specjalizująca się w zabezpieczeniach Microsoft 365.
+          </h2>
+
+          <p class="v-firmaLead">
+            Pomagamy firmom uniknąć incydentów, uporządkować dostęp do danych i bezpiecznie rozwijać Microsoft 365.
+            Zabezpieczamy: tożsamość, pocztę, urządzenia i dane. Wdrażamy podejście Zero Trust (zerowej tolerancji)
+            w Microsoft 365 – przewidywalnie i bez przestojów.
+          </p>
+
+          <div class="v-miniKpis">
+            <div class="v-kpi">
+              <div class="v-kpiTop">Zakres</div>
+              <div class="v-kpiBottom">Microsoft 365</div>
+            </div>
+            <div class="v-kpi">
+              <div class="v-kpiTop">Podejście</div>
+              <div class="v-kpiBottom">Zero Trust</div>
+            </div>
+            <div class="v-kpi">
+              <div class="v-kpiTop">Kraj</div>
+              <div class="v-kpiBottom">Polska</div>
+            </div>
+          </div>
+
+          <div class="v-firmaActions">
+            <a class="v-btn v-btnBrand"
+               href="https://bookings.cloud.microsoft/book/RedFlag1@redflag.com.pl"
+               target="_blank"
+               rel="noopener">
+              Umów 15 min
+            </a>
+
+            <a class="v-btn v-btnGhost" href="#proces">
+              Zobacz proces
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="v-firmaRight">
+          <div class="v-badgesTitle">Dlaczego firmy nam ufają</div>
+
+          <div class="v-badgesGrid">
+
+            <div class="v-badge">
+              <div class="v-badgeIcon">📉</div>
+              <div>
+                <div class="v-badgeHead">Mniejsze ryzyko incydentów</div>
+                <div class="v-badgeSub">Ograniczamy phishing i przejęcia kont.</div>
+              </div>
+            </div>
+
+            <div class="v-badge">
+              <div class="v-badgeIcon">⚙️</div>
+              <div>
+                <div class="v-badgeHead">Bezpieczne zmiany</div>
+                <div class="v-badgeSub">Wdrożenia bez przestojów dla użytkowników.</div>
+              </div>
+            </div>
+
+            <div class="v-badge">
+              <div class="v-badgeIcon">📊</div>
+              <div>
+                <div class="v-badgeHead">Widoczność i kontrola</div>
+                <div class="v-badgeSub">Wiesz kto, gdzie i jak ma dostęp.</div>
+              </div>
+            </div>
+
+            <div class="v-badge">
+              <div class="v-badgeIcon">🧾</div>
+              <div>
+                <div class="v-badgeHead">Gotowość na audyt</div>
+                <div class="v-badgeSub">Polityki, logi i dokumentacja uporządkowane.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- KONTAKT -->
+    <section class="section" id="kontakt">
+      <div class="section-h">
+        <div>
+          <h2>Kontakt / umów 15 minut</h2>
+          <p>Szybka kwalifikacja: liczba użytkowników, obecne licencje, objawy incydentu, priorytet (pilne / planowe).</p>
+        </div>
+        <span class="badge info">Szybkie wdrożenie</span>
+      </div>
+
+      <div class="section-b">
+        <div class="grid">
+          <div class="card">
+            <h3>Wiadomość startowa (mail)</h3>
+            <p>Kliknij, aby wysłać gotowy szablon wiadomości.</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" id="mailtoLink" href="msp@valcreon.com">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m20 0a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2m20 0-10 7L1 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                Wyślij e-mail
+              </a>
+              <button class="btn" type="button" onclick="copyTemplate()">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 9h10v10H9V9z" stroke="currentColor" stroke-width="2"/><path d="M5 5h10v4H5V5z" stroke="currentColor" stroke-width="2"/></svg>
+                Kopiuj szablon
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Co przygotować (2 min)</h3>
+            <ul class="bullets">
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Liczba użytkowników</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Obecne licencje (Basic/Standard/Premium)</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Co się stało: phishing / logowania / DCF / urządzenia</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 7l-9 9-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Priorytet: pilne / planowe</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Najczęstszy szybki start</h3>
+            <p>
+              Jeśli to incydent DCF: w pierwszej kolejności włączamy kontrolę logowań i sesji (Wariant 1),
+              równolegle domykamy pocztę (O365 P1) oraz urządzenia (Defender for Business) – zależnie od stanu endpointów.
+            </p>
+          </div>
+        </div>
+
+        <div class="foot">
+        <span class="foot-brand">
+  © <span id="year"></span>
+  <a href="https://valcreon.com" class="link-reset" target="_blank" rel="noopener">
+    valcreon.com
+  </a>
+  • Microsoft 365 Security
+</span>
+
+
+<span class="foot-links">
+  <a href="#proces">Proces</a>
+  <a href="#wariant1">Wariant 1</a>
+  <a href="#wariant2">Wariant 2</a>
+  <a href="#licencje">Licencje</a>
+</span>
+
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+
+  <!-- STICKY CTA (mobile) -->
+
+<div class="sticky-cta" aria-label="Szybkie akcje">
+  <div class="bar">
+    <a class="btn primary"
+       href="https://bookings.cloud.microsoft/book/RedFlag1@redflag.com.pl"
+       target="_blank"
+       rel="noopener">
+      Umów 15 min
+    </a>
+
+    <a class="btn" href="#proces">
+      Zobacz proces
+    </a>
+  </div>
+</div>
+
+
+  <script>
+
+
+    function openMenu(){
+  const drawer = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("menuBackdrop");
+  const burger = document.querySelector(".btn.burger");
+
+  drawer.hidden = false;
+  backdrop.hidden = false;
+
+  requestAnimationFrame(() => drawer.classList.add("open"));
+  if (burger) burger.setAttribute("aria-expanded", "true");
+
+  // blokada scrolla tła
+  document.documentElement.style.overflow = "hidden";
+}
+
+function closeMenu(){
+  const drawer = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("menuBackdrop");
+  const burger = document.querySelector(".btn.burger");
+
+  drawer.classList.remove("open");
+  if (burger) burger.setAttribute("aria-expanded", "false");
+
+  // przywróć scroll po animacji
+  setTimeout(() => {
+    drawer.hidden = true;
+    backdrop.hidden = true;
+    document.documentElement.style.overflow = "";
+  }, 180);
+}
+
+// ESC zamyka
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMenu();
+});
+
+
+    // Konfiguracja mailto (dopasuj adres)
+    const CONTACT_EMAIL = "msp@valcreon.com";
+
+    const templateSubject = "Oferta po incydencie bezpieczeństwa (przejęcie konta) – Microsoft 365";
+    const templateBody =
+`Dzień dobry,
+
+Liczba użytkowników:
+Obecne licencje (Basic/Standard/Premium):
+Problem (phishing/logowania/urządzenia/backup):
+Czy incydent dotyczył Device Code Flow? (tak/nie/nie wiem):
+Priorytet (pilne / planowe):
+
+Chcę umówić 15 min na krótką analizę i plan działań.
+
+Pozdrawiam`;
+
+    function buildMailto() {
+      const href = "mailto:" + encodeURIComponent(CONTACT_EMAIL)
+        + "?subject=" + encodeURIComponent(templateSubject)
+        + "&body=" + encodeURIComponent(templateBody);
+      const a = document.getElementById("mailtoLink");
+      if (a) a.setAttribute("href", href);
+    }
+
+    async function copyTemplate(){
+      try{
+        await navigator.clipboard.writeText(
+          templateSubject + "\n\n" + templateBody
+        );
+        toast("Skopiowano szablon do schowka.");
+      }catch(e){
+        toast("Nie udało się skopiować. Zaznacz i skopiuj ręcznie.");
+      }
+    }
+
+    // Minimalny toast (bez bibliotek)
+    let toastTimer = null;
+    function toast(msg){
+      clearTimeout(toastTimer);
+      let el = document.getElementById("toast");
+      if(!el){
+        el = document.createElement("div");
+        el.id = "toast";
+        el.style.position = "fixed";
+        el.style.left = "50%";
+        el.style.bottom = "86px";
+        el.style.transform = "translateX(-50%)";
+        el.style.padding = "10px 12px";
+        el.style.borderRadius = "14px";
+        el.style.border = "1px solid rgba(255,255,255,.12)";
+        el.style.background = "rgba(15,20,27,.92)";
+        el.style.color = "#dbe2ea";
+        el.style.fontWeight = "800";
+        el.style.fontSize = "13px";
+        el.style.zIndex = "999";
+        el.style.boxShadow = "0 18px 50px rgba(0,0,0,.45)";
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = "1";
+      toastTimer = setTimeout(()=>{ el.style.opacity="0"; }, 1800);
+    }
+
+    // Init
+    buildMailto();
+
+
+
+document.querySelectorAll(".mitem").forEach(a=>{
+  a.addEventListener("click", ()=>{
+    document.querySelectorAll(".mitem").forEach(x=>x.classList.remove("active"));
+    a.classList.add("active");
+  });
+});
+
+
+document.querySelectorAll('#mobileMenu a').forEach(a=>{
+  a.addEventListener('click', () => {
+    if (typeof closeMenu === "function") closeMenu();
+  });
+});
+ 
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+  </script>
+
+<!-- MOBILE DRAWER + BACKDROP -->
+<div class="backdrop" id="menuBackdrop" onclick="closeMenu()" hidden></div>
+
+<aside class="drawer" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu mobilne" hidden>
+  <div class="drawer-head">
+
+    <div class="drawer-title">
+    <img class="drawer-logo" src="./logo-32.png" alt="Logo" />
+    <div>
+        <b>Menu</b>
+        <small>Oferta zabezpieczeń</small>
+    </div>
+    </div>
+
+
+
+    <button class="btn icon" type="button" aria-label="Zamknij menu" onclick="closeMenu()">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+<nav class="drawer-nav" aria-label="Nawigacja">
+  <a class="drawer-link" href="#proces" onclick="closeMenu()">
+    <span class="dnav-ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="dnav-txt">
+      <b>Proces</b>
+      <small>Wyższy poziom zabezpieczeń</small>
+    </span>
+    <span class="dnav-chev" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+
+  <a class="drawer-link" href="#wariant1" onclick="closeMenu()">
+    <span class="dnav-ic ok" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7l3-7z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="dnav-txt">
+      <b>Wariant 1</b>
+      <small>Optymalizacja tego co jest</small>
+    </span>
+    <span class="dnav-chev" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+
+  <a class="drawer-link" href="#wariant2" onclick="closeMenu()">
+    <span class="dnav-ic info" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 3l8 4v6c0 5-3.5 9-8 10C7.5 22 4 18 4 13V7l8-4z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="dnav-txt">
+      <b>Wariant 2</b>
+      <small>CyberONE – pakiet opieki Cyber IT</small>
+    </span>
+    <span class="dnav-chev" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+
+  <a class="drawer-link" href="#licencje" onclick="closeMenu()">
+    <span class="dnav-ic warn" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 6h16M6 10h12M6 14h10M6 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="dnav-txt">
+      <b>Licencje</b>
+      <small>Różnice w poziomie bezpieczeństwa</small>
+    </span>
+    <span class="dnav-chev" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+
+<a class="drawer-link"
+   href="https://bookings.cloud.microsoft/book/RedFlag1@redflag.com.pl"
+   target="_blank"
+   rel="noopener"
+   onclick="closeMenu()">
+
+  <span class="dnav-ic" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M21 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m20 0a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2m20 0-10 7L1 8"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"/>
+    </svg>
+  </span>
+
+  <span class="dnav-txt">
+    <b>Umów 15 min</b>
+    <small>Rezerwacja Microsoft Bookings</small>
+  </span>
+
+  <span class="dnav-chev" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M9 6l6 6-6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </span>
+
+</a>
+</nav>
+
+  <div class="drawer-actions">
+    <button class="btn ghost" type="button" onclick="window.print(); closeMenu();">
+      Drukuj / PDF
+    </button>
+    <a class="btn primary" href="#kontakt" onclick="closeMenu()">Umów 15 min</a>
+  </div>
+</aside>
+
+</body>
+</html>
